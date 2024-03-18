@@ -33,22 +33,20 @@ namespace ReportService
             Logger.Info("Service started...");
         }
 
-
-
         private void DoWork(object sender, ElapsedEventArgs e)
         {
 
             try
             {
-
                 SendError();
                 SendReport();
             }
+
             catch (Exception ex )
             {
 
                 Logger.Error(ex, ex.Message);
-                    throw new Exception(ex.Message);
+                throw new Exception(ex.Message);
             }
         }
         private void SendError()
@@ -71,13 +69,15 @@ namespace ReportService
                 return;
             //send mail
             _reportRepository.ReportSent(report);
-
             Logger.Info("Report sent..");
         }
-
         protected override void OnStop()
         {
             Logger.Info("Service stoped...");
         }
     }
 }
+
+
+
+
