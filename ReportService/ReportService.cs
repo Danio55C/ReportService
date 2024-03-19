@@ -1,6 +1,6 @@
-﻿using ReportService.Models;
-using ReportService.Models.Domains;
-using ReportService.Repositories;
+﻿using EmailSender;
+using ReportService.Core;
+using ReportService.Core.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,7 +25,7 @@ namespace ReportService
         private ReportRepository _reportRepository = new ReportRepository();
         private Email _email;
         private GenerateHtmlEmail _htmlEmail = new GenerateHtmlEmail();
-        private string _emailReceiver = "jancadaniel55@gmail.com";
+        private string _emailReceiver = "daniel.janca@WP.pl";
         public ReportService()
         {
             InitializeComponent();

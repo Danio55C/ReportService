@@ -1,11 +1,12 @@
-﻿using ReportService.Models.Domains;
+﻿using ReportService.Core.Domains;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReportService.Models
+
+namespace ReportService.Core
 {
     public class GenerateHtmlEmail
     {
@@ -22,15 +23,15 @@ namespace ReportService.Models
                 @"
                    <table border=1 cellpadding=5 cellspacing=1>
                     <tr>
-                      <td align=center bgcolor=lightgrey>Wiadomośc< /td>
-                      <td align=center bgcolor=lightgrey>Data< /td>
+                      <td> align=center bgcolor=lightgrey>Wiadomośc< </td>
+                      <td> align=center bgcolor=lightgrey>Data </td>
                     </tr>";
             foreach (var error in errors)
             {
                 html +=
                     $@"<tr>
-                    <td align=center>{error.Message}</td>
-                    <td align=center>{error.Date.ToString("dd-MM-yyyy HH:mm")}</td>
+                    <td> align=center>{error.Message}</td>
+                    <td> align=center>{error.Date.ToString("dd-MM-yyyy HH:mm")}</td>
                     </tr>";
             }
             html += @"</table><br /><br /><i>Automatyczna Wiadomość wysłana z aplikacji Reprot service.</i>";
@@ -49,9 +50,9 @@ namespace ReportService.Models
                                 @"
                    <table border=1 cellpadding=5 cellspacing=1>
                     <tr>
-                      <td align=center bgcolor=lightgrey>Tytuł< /td>
-                      <td align=center bgcolor=lightgrey>Opis< /td>
-                      <td align=center bgcolor=lightgrey>Wartość< /td>
+                      <td align=center bgcolor=lightgrey>Tytuł </td>
+                      <td align=center bgcolor=lightgrey>Opis </td>
+                      <td align=center bgcolor=lightgrey>Wartość </td>
                     </tr>";
 
                 foreach (var position in report.Positions)
