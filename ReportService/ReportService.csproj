@@ -54,9 +54,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Models\Domains\Error.cs" />
     <Compile Include="Models\Domains\Report.cs" />
     <Compile Include="Models\Domains\ReportPosition.cs" />
+    <Compile Include="Models\Email.cs" />
+    <Compile Include="Models\EmailParams.cs" />
     <Compile Include="Models\GenerateHtmlEmail.cs" />
     <Compile Include="ProjectInstaller.cs">
       <SubType>Component</SubType>

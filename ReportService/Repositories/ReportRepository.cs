@@ -9,6 +9,7 @@ namespace ReportService.Repositories
 {
     public class ReportRepository
     {
+       
         public Report GetLastNotSentReport()
         {
             //pobieranie z bazy danych
