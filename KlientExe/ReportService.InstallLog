@@ -1,0 +1,13 @@
+﻿Instalowanie zestawu 'D:\programowanie\kurs dotnet\ReportService\KlientExe\ReportService.exe'.
+Uwzględnione parametry to:
+   logtoconsole = 
+   logfile = D:\programowanie\kurs dotnet\ReportService\KlientExe\ReportService.InstallLog
+   assemblypath = D:\programowanie\kurs dotnet\ReportService\KlientExe\ReportService.exe
+Trwa instalowanie usługi ReportService...
+Trwa tworzenie źródła EventLog ReportService w dzienniku Application...
+Wycofywanie zestawu 'D:\programowanie\kurs dotnet\ReportService\KlientExe\ReportService.exe'.
+Uwzględnione parametry to:
+   logtoconsole = 
+   logfile = D:\programowanie\kurs dotnet\ReportService\KlientExe\ReportService.InstallLog
+   assemblypath = D:\programowanie\kurs dotnet\ReportService\KlientExe\ReportService.exe
+Przywracanie dziennika zdarzeń do poprzedniego stanu dla źródła ReportService.

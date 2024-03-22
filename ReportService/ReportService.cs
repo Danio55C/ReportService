@@ -3,6 +3,7 @@ using ReportService.Core;
 using ReportService.Core.Repositories;
 using System;
 using System.Collections.Generic;
+using Cipher;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
@@ -20,13 +21,15 @@ namespace ReportService
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private const int SendHour = 8;
-        private const int IntervallInMinutes = 30;
+        private const int IntervallInMinutes = 1;
         private Timer _timer = new Timer(IntervallInMinutes*60000);
         private ErrorRepository _errorRepository = new ErrorRepository();
         private ReportRepository _reportRepository = new ReportRepository();
         private Email _email;
         private GenerateHtmlEmail _htmlEmail = new GenerateHtmlEmail();
-        private string _emailReceiver = "daniel.janca@WP.pl";
+        private string _emailReceiver;
+        private StringCipher _stringCipher = new StringCipher("25F48648-F382-460F-BBA4-4170CD7FE2E3");
+        private const string NotEnscyptedPasswordPrefix = "encrypt:";
         public ReportService()
         {
             
@@ -36,6 +39,9 @@ namespace ReportService
             try
             {
                 _emailReceiver = ConfigurationManager.AppSettings["ReceiverEmail"];
+
+                
+
                 _email = new Email(new EmailParams
                 {
                     HostSmtp = ConfigurationManager.AppSettings["HostSmtp"],
@@ -43,9 +49,9 @@ namespace ReportService
                     EnableSsl = Convert.ToBoolean(ConfigurationManager.AppSettings["EnableSsl"]),
                     SenderName = ConfigurationManager.AppSettings["SenderName"],
                     SenderEmail = ConfigurationManager.AppSettings["SenderEmail"],
-                    SenderEmailPassword = ConfigurationManager.AppSettings["SenderEmailPassword"],
-
+                    SenderEmailPassword = DecryptSenderEmailPassword(),
                 });
+
             }
             catch (Exception ex)
             {
@@ -54,7 +60,21 @@ namespace ReportService
                 throw new Exception(ex.Message);
             }
         }
+        private string DecryptSenderEmailPassword()
+        {
+            var encryptedPassword = ConfigurationManager.AppSettings["SenderEmailPassword"];
 
+            if (encryptedPassword.StartsWith(NotEnscyptedPasswordPrefix))
+            {
+                encryptedPassword = _stringCipher.Encrypt(encryptedPassword.Replace(NotEnscyptedPasswordPrefix, ""));
+
+                var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                configFile.AppSettings.Settings["SenderEmailPassword"].Value = encryptedPassword;
+                configFile.Save();
+            }
+
+            return _stringCipher.Decrypt(encryptedPassword);
+        }
         protected override void OnStart(string[] args)
         {
             _timer.Elapsed += DoWork;

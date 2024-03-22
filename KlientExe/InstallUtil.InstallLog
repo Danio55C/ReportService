@@ -1,0 +1,17 @@
+﻿
+Uruchamianie instalacji transakcyjnej.
+
+Rozpoczyna się faza instalacji procesu instalacji.
+Aby sprawdzić postęp zestawu D:\programowanie\kurs dotnet\ReportService\KlientExe\ReportService.exe, zapoznaj się z zawartością pliku dziennika.
+Plik znajduje się w D:\programowanie\kurs dotnet\ReportService\KlientExe\ReportService.InstallLog.
+
+Podczas fazy instalacji wystąpił wyjątek.
+System.ComponentModel.Win32Exception: Określona usługa już istnieje
+
+Rozpoczyna się faza wycofywania procesu instalacji.
+Aby sprawdzić postęp zestawu D:\programowanie\kurs dotnet\ReportService\KlientExe\ReportService.exe, zapoznaj się z zawartością pliku dziennika.
+Plik znajduje się w D:\programowanie\kurs dotnet\ReportService\KlientExe\ReportService.InstallLog.
+
+Faza wycofywania została ukończona pomyślnie.
+
+Instalacja transakcyjna została ukończona.
